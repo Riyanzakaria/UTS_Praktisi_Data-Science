@@ -1,0 +1,27 @@
+{
+  "rows_per_file": {
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_-nwub4cROX.csv": 29,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_4sxH8Dz0hr.csv": 2,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_58yzyiBQ9U.csv": 105,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_9xtqAsPitG.csv": 96,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_WdjZl0bRfZ.csv": 18,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_bRQ9afwSIP.csv": 347,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_hMxhx9QLTq.csv": 534,
+    "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_i3BJEnT77K.csv": 160
+  },
+  "total_rows": 1291,
+  "unique_rows": 846,
+  "duplicate_count": 445,
+  "missing_title": 0,
+  "missing_body": 0,
+  "language_distribution": {
+    "en": 656,
+    "ms": 146,
+    "zh": 28,
+    "id": 14,
+    "vi": 1,
+    "es": 1
+  },
+  "entities_empty_count": 846,
+  "english_unique_count": 656
+}
