@@ -1,0 +1,211 @@
+{
+  "seed": 42,
+  "iterations": 25,
+  "dropout": 0.2,
+  "batch_compounding": [
+    4.0,
+    32.0
+  ],
+  "labels": [
+    "PERSON",
+    "ORG",
+    "GPE",
+    "DATE",
+    "EVENT",
+    "MONEY"
+  ],
+  "duration_seconds": 18.9,
+  "doc_span_counts": {
+    "train": {
+      "docs": 12,
+      "spans": 119,
+      "per_label": {
+        "ORG": 43,
+        "GPE": 16,
+        "DATE": 30,
+        "PERSON": 5,
+        "MONEY": 11,
+        "EVENT": 14
+      }
+    },
+    "val": {
+      "docs": 3,
+      "spans": 32,
+      "per_label": {
+        "DATE": 9,
+        "ORG": 7,
+        "GPE": 10,
+        "PERSON": 4,
+        "MONEY": 2
+      }
+    },
+    "test": {
+      "docs": 3,
+      "spans": 28,
+      "per_label": {
+        "EVENT": 3,
+        "ORG": 10,
+        "GPE": 3,
+        "DATE": 7,
+        "PERSON": 5
+      }
+    }
+  },
+  "imbalance_note": "Class imbalance (train): top labels = ORG:43, DATE:30, GPE:16; rarest = MONEY:11, PERSON:5. Model trains on 12 docs / 119 spans.",
+  "val_history": [
+    {
+      "iteration": 1,
+      "val_precision": 0.39473684210526316,
+      "val_recall": 0.46875,
+      "val_f1": 0.4285714285714286
+    },
+    {
+      "iteration": 2,
+      "val_precision": 0.47058823529411764,
+      "val_recall": 0.5,
+      "val_f1": 0.48484848484848486
+    },
+    {
+      "iteration": 3,
+      "val_precision": 0.5517241379310345,
+      "val_recall": 0.5,
+      "val_f1": 0.5245901639344263
+    },
+    {
+      "iteration": 4,
+      "val_precision": 0.6296296296296297,
+      "val_recall": 0.53125,
+      "val_f1": 0.5762711864406779
+    },
+    {
+      "iteration": 5,
+      "val_precision": 0.6071428571428571,
+      "val_recall": 0.53125,
+      "val_f1": 0.5666666666666667
+    },
+    {
+      "iteration": 6,
+      "val_precision": 0.6333333333333333,
+      "val_recall": 0.59375,
+      "val_f1": 0.6129032258064516
+    },
+    {
+      "iteration": 7,
+      "val_precision": 0.5806451612903226,
+      "val_recall": 0.5625,
+      "val_f1": 0.5714285714285715
+    },
+    {
+      "iteration": 8,
+      "val_precision": 0.6,
+      "val_recall": 0.5625,
+      "val_f1": 0.5806451612903225
+    },
+    {
+      "iteration": 9,
+      "val_precision": 0.6206896551724138,
+      "val_recall": 0.5625,
+      "val_f1": 0.5901639344262296
+    },
+    {
+      "iteration": 10,
+      "val_precision": 0.6,
+      "val_recall": 0.5625,
+      "val_f1": 0.5806451612903225
+    },
+    {
+      "iteration": 11,
+      "val_precision": 0.59375,
+      "val_recall": 0.59375,
+      "val_f1": 0.59375
+    },
+    {
+      "iteration": 12,
+      "val_precision": 0.59375,
+      "val_recall": 0.59375,
+      "val_f1": 0.59375
+    },
+    {
+      "iteration": 13,
+      "val_precision": 0.59375,
+      "val_recall": 0.59375,
+      "val_f1": 0.59375
+    },
+    {
+      "iteration": 14,
+      "val_precision": 0.59375,
+      "val_recall": 0.59375,
+      "val_f1": 0.59375
+    },
+    {
+      "iteration": 15,
+      "val_precision": 0.6060606060606061,
+      "val_recall": 0.625,
+      "val_f1": 0.6153846153846154
+    },
+    {
+      "iteration": 16,
+      "val_precision": 0.625,
+      "val_recall": 0.625,
+      "val_f1": 0.625
+    },
+    {
+      "iteration": 17,
+      "val_precision": 0.6451612903225806,
+      "val_recall": 0.625,
+      "val_f1": 0.634920634920635
+    },
+    {
+      "iteration": 18,
+      "val_precision": 0.7037037037037037,
+      "val_recall": 0.59375,
+      "val_f1": 0.6440677966101694
+    },
+    {
+      "iteration": 19,
+      "val_precision": 0.6785714285714286,
+      "val_recall": 0.59375,
+      "val_f1": 0.6333333333333334
+    },
+    {
+      "iteration": 20,
+      "val_precision": 0.6551724137931034,
+      "val_recall": 0.59375,
+      "val_f1": 0.6229508196721311
+    },
+    {
+      "iteration": 21,
+      "val_precision": 0.6666666666666666,
+      "val_recall": 0.625,
+      "val_f1": 0.6451612903225806
+    },
+    {
+      "iteration": 22,
+      "val_precision": 0.6451612903225806,
+      "val_recall": 0.625,
+      "val_f1": 0.634920634920635
+    },
+    {
+      "iteration": 23,
+      "val_precision": 0.6060606060606061,
+      "val_recall": 0.625,
+      "val_f1": 0.6153846153846154
+    },
+    {
+      "iteration": 24,
+      "val_precision": 0.6060606060606061,
+      "val_recall": 0.625,
+      "val_f1": 0.6153846153846154
+    },
+    {
+      "iteration": 25,
+      "val_precision": 0.6060606060606061,
+      "val_recall": 0.625,
+      "val_f1": 0.6153846153846154
+    }
+  ],
+  "best_iteration": 21,
+  "best_val_f1": 0.6451612903225806,
+  "stopping_choice": "After each iteration scored exact-span F1 on the 3 val records; kept the single iteration with the highest val F1 (iteration 21, F1=0.645; ties resolved to the earliest iteration). Test records were never used during training or tuning.",
+  "held_out_note": "The 3 test records of annotations.jsonl and the 7 new eval_extra excerpts are HELD OUT: they were not used in training and did not influence model or iteration selection."
+}
