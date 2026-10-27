@@ -1,0 +1,617 @@
+[
+  {
+    "article_id": "13d29c940a45d74218cccda82e7d6f15258c01fa5929f9f3987e6e2303a7d934",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_hMxhx9QLTq.csv",
+    "row_index": 298,
+    "split": "test",
+    "text": "The Ladies 2026: 42 pemain mulakan saingan pusingan pertama - Portal Berita RTM\n\nSERI KEMBANGAN, 1 Oktober – Pusingan pertama Kejohanan Golf Wanita The Ladies 2026 menyaksikan 42 pemain mula beraksi seawal pukul 7.30 pagi tadi. Saingan kali ini turut menampilkan gandingan pemain profesional serta amatur seperti Allycia Gan, Liyana Durisic, Durriyah Damian dan Kelly Tan. Menurut The Mines Resort & Golf Club, matlamat utama kejohanan tersebut adalah untuk melahirkan lebih ramai pemain berwibawa tempatan. Kejohanan tersebut juga sebagai batu loncatan penting sebelum saingan bertaraf antarabangsa menjelang kejohanan Maybank Championship tidak lama lagi.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 15,
+        "label": "EVENT"
+      },
+      {
+        "start": 76,
+        "end": 79,
+        "label": "ORG"
+      },
+      {
+        "start": 81,
+        "end": 95,
+        "label": "GPE"
+      },
+      {
+        "start": 97,
+        "end": 106,
+        "label": "DATE"
+      },
+      {
+        "start": 148,
+        "end": 163,
+        "label": "EVENT"
+      },
+      {
+        "start": 212,
+        "end": 221,
+        "label": "DATE"
+      },
+      {
+        "start": 313,
+        "end": 324,
+        "label": "PERSON"
+      },
+      {
+        "start": 326,
+        "end": 340,
+        "label": "PERSON"
+      },
+      {
+        "start": 342,
+        "end": 357,
+        "label": "PERSON"
+      },
+      {
+        "start": 362,
+        "end": 371,
+        "label": "PERSON"
+      },
+      {
+        "start": 620,
+        "end": 640,
+        "label": "EVENT"
+      }
+    ],
+    "notes": "Gold labels copied verbatim from project/data/annotations.jsonl (human-reviewed)."
+  },
+  {
+    "article_id": "297c989aa5679738ddfedc7b5cb9a267598e021a6e610b1a3044ee9831318b55",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_58yzyiBQ9U.csv",
+    "row_index": 85,
+    "split": "test",
+    "text": "High Court to rule Oct 23 on Maritime Network’s bid to keep RHB accounts open\n\n<p class=\"wp-block-paragraph\"><strong>KUALA LUMPUR</strong>: The High Court here today fixed Oct 23 to rule on a shipping company&#8217;s bid to restrain RHB Bank Berhad from closing two of its long-standing accounts, pending the disposal of its full suit.</p>  <p class=\"wp-block-paragraph\">Judicial Commissioner Elesabet Paya Wan set the date after hearing submissions from P.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 10,
+        "label": "ORG"
+      },
+      {
+        "start": 19,
+        "end": 25,
+        "label": "DATE"
+      },
+      {
+        "start": 29,
+        "end": 45,
+        "label": "ORG"
+      },
+      {
+        "start": 60,
+        "end": 63,
+        "label": "ORG"
+      },
+      {
+        "start": 117,
+        "end": 129,
+        "label": "GPE"
+      },
+      {
+        "start": 144,
+        "end": 154,
+        "label": "ORG"
+      },
+      {
+        "start": 160,
+        "end": 165,
+        "label": "DATE"
+      },
+      {
+        "start": 172,
+        "end": 178,
+        "label": "DATE"
+      },
+      {
+        "start": 233,
+        "end": 248,
+        "label": "ORG"
+      }
+    ],
+    "notes": "Gold labels copied verbatim from project/data/annotations.jsonl (human-reviewed)."
+  },
+  {
+    "article_id": "86947f067997df83d064be138cf7f150fd43607862912b80d31940d381636051",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_-nwub4cROX.csv",
+    "row_index": 17,
+    "split": "test",
+    "text": "Make The Edge Malaysia your preferred source on Google\n\nSHAH ALAM (Sept 30): Genneva Gold Sdn Bhd, the company behind a massive gold investment scam, has been wound up by the High Court here, which could see victims recouping their losses.  In her brief judgment on Wednesday, Justice Wan Fadhilah Nor Wan Idris found that the company, which had been convicted for unlawful deposit-taking, had lost its foundation as it had ceased operations for many years and lacked the licences and permits to resume its original business.  The court also noted the deficiencies in its records and that the company did not have a functioning board of directors.",
+    "entities": [
+      {
+        "start": 5,
+        "end": 22,
+        "label": "ORG"
+      },
+      {
+        "start": 48,
+        "end": 54,
+        "label": "ORG"
+      },
+      {
+        "start": 56,
+        "end": 65,
+        "label": "GPE"
+      },
+      {
+        "start": 67,
+        "end": 74,
+        "label": "DATE"
+      },
+      {
+        "start": 77,
+        "end": 97,
+        "label": "ORG"
+      },
+      {
+        "start": 175,
+        "end": 185,
+        "label": "ORG"
+      },
+      {
+        "start": 266,
+        "end": 275,
+        "label": "DATE"
+      },
+      {
+        "start": 285,
+        "end": 311,
+        "label": "PERSON"
+      }
+    ],
+    "notes": "Gold labels copied verbatim from project/data/annotations.jsonl (human-reviewed)."
+  },
+  {
+    "article_id": "a4b9d4d69271adea944a1e6dbefa761765614d148e93236350fcfd374d92de84",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_9xtqAsPitG.csv",
+    "row_index": 86,
+    "split": "eval",
+    "text": "HLB Islamic salur RM138,600 pembiayaan kepada melalui SURI Inspirasi\n\nPETALING JAYA: HLB Islamic menyalurkan pembiayaan sebanyak RM138,600 kepada perusahaan sosial SURI Inspirasi (SURI) di bawah kerangka iTEKAD Bank Negara Malaysia (BNM), selaras dengan komitmen untuk memperkasakan ekosistem perantaraan berasaskan Pengantaraan Berasaskan Nilai (VBI).  Inisiatif itu secara langsung menyumbang kepada peningkatan purata pendapatan bulanan sebanyak 94 peratus serta menjana jumlah pendapatan baharu melebihi RM14,000 bagi usahawan yang menyertai program Sustainable Reliable Income (SRI) anjuran SURI.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 11,
+        "label": "ORG"
+      },
+      {
+        "start": 18,
+        "end": 27,
+        "label": "MONEY"
+      },
+      {
+        "start": 54,
+        "end": 68,
+        "label": "ORG"
+      },
+      {
+        "start": 70,
+        "end": 83,
+        "label": "GPE"
+      },
+      {
+        "start": 85,
+        "end": 96,
+        "label": "ORG"
+      },
+      {
+        "start": 129,
+        "end": 138,
+        "label": "MONEY"
+      },
+      {
+        "start": 164,
+        "end": 178,
+        "label": "ORG"
+      },
+      {
+        "start": 180,
+        "end": 184,
+        "label": "ORG"
+      },
+      {
+        "start": 204,
+        "end": 210,
+        "label": "EVENT"
+      },
+      {
+        "start": 211,
+        "end": 231,
+        "label": "ORG"
+      },
+      {
+        "start": 233,
+        "end": 236,
+        "label": "ORG"
+      },
+      {
+        "start": 316,
+        "end": 345,
+        "label": "EVENT"
+      },
+      {
+        "start": 347,
+        "end": 350,
+        "label": "EVENT"
+      },
+      {
+        "start": 508,
+        "end": 516,
+        "label": "MONEY"
+      },
+      {
+        "start": 554,
+        "end": 581,
+        "label": "EVENT"
+      },
+      {
+        "start": 583,
+        "end": 586,
+        "label": "EVENT"
+      },
+      {
+        "start": 596,
+        "end": 600,
+        "label": "ORG"
+      }
+    ],
+    "notes": "Review: baseline tagged 'HLB' alone -> fixed to full 'HLB Islamic' ORG (x2); 'RM138,600' tagged PERSON -> fixed to MONEY (x2); 'kepada melalui' PERSON, 'Inisiatif'/'menjana jumlah pendapatan'/'melebihi RM14,000'/'bagi' ORG, 'secara langsung menyumbang kepada peningkatan'/'pendapatan bulanan' PERSON, 'usahawan' GPE, 'menyertai' DATE -> all deleted (generic words / wrong label); '94' CARDINAL deleted (percent out of scheme); added misses: 'SURI Inspirasi' ORG (x2), '(SURI)' ORG, 'PETALING JAYA' GPE, 'iTEKAD' EVENT (named BNM programme), 'Pengantaraan Berasaskan Nilai' + 'VBI' EVENT (named framework), 'Sustainable Reliable Income' + 'SRI' EVENT (named programme), 'RM14,000' MONEY."
+  },
+  {
+    "article_id": "00b927e4e743da1cb46bff4717a6e2d40cdcc6ec09dccf9b9472414e6d794393",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_58yzyiBQ9U.csv",
+    "row_index": 89,
+    "split": "eval",
+    "text": "Oct 23 ruling on bid to restrain RHB from closing Maritime Network's accounts\n\n<div class=newsTextDataWrapInner><p>KUALA LUMPUR (Sept 24): The High Court here on Thursday fixed Oct 23 to rule on a shipping company's bid to restrain RHB Bank Bhd (LK:RHBBANK) from closing two of its long-standing accounts, pending the disposal of its full suit.</p></div>\r \r <div class=newsTextDataWrapInner><p>Judicial Commissioner Elesabet Paya Wan set the date after hearing submissions from P&nbsp;Taneswaran, acting for Maritime Network Sdn Bhd, and the bank's counsel, Gan Khong Aik.</p></div>\r \r <div class=newsTextDataWrapInner><p>Taneswaran submitted that the bank had failed to establis",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "label": "DATE"
+      },
+      {
+        "start": 33,
+        "end": 36,
+        "label": "ORG"
+      },
+      {
+        "start": 50,
+        "end": 66,
+        "label": "ORG"
+      },
+      {
+        "start": 115,
+        "end": 127,
+        "label": "GPE"
+      },
+      {
+        "start": 129,
+        "end": 136,
+        "label": "DATE"
+      },
+      {
+        "start": 143,
+        "end": 153,
+        "label": "ORG"
+      },
+      {
+        "start": 162,
+        "end": 170,
+        "label": "DATE"
+      },
+      {
+        "start": 177,
+        "end": 183,
+        "label": "DATE"
+      },
+      {
+        "start": 232,
+        "end": 244,
+        "label": "ORG"
+      },
+      {
+        "start": 249,
+        "end": 256,
+        "label": "ORG"
+      },
+      {
+        "start": 416,
+        "end": 433,
+        "label": "PERSON"
+      },
+      {
+        "start": 485,
+        "end": 495,
+        "label": "PERSON"
+      },
+      {
+        "start": 508,
+        "end": 532,
+        "label": "ORG"
+      },
+      {
+        "start": 558,
+        "end": 571,
+        "label": "PERSON"
+      },
+      {
+        "start": 622,
+        "end": 632,
+        "label": "PERSON"
+      }
+    ],
+    "notes": "Review: 'Oct 23' (title) was CARDINAL '23' -> fixed to DATE 'Oct 23'; added miss 'RHB' ORG (title); 'Maritime Network's' -> possessive stripped to 'Maritime Network' ORG; added miss 'KUALA LUMPUR' GPE; 'The High Court' -> stripped 'The' to 'High Court' ORG (matches train/test convention); 'Oct 23' (body) was CARDINAL -> DATE; 'Bank Bhd' -> expanded to 'RHB Bank Bhd' ORG; ticker '(LK:RHBBANK)' -> 'RHBBANK' ORG (listed instrument, cf. val 'MAYBANK' ORG); deleted garbage span 'newsTextDataWrapInner><p>Judicial' ORG; 'P&nbsp;Taneswaran' GPE -> PERSON 'Taneswaran' (markup excluded from span); 'Gan Khong' -> expanded to full 'Gan Khong Aik' PERSON; added miss 'Taneswaran' PERSON (final paragraph)."
+  },
+  {
+    "article_id": "a6a10ea181432bd8664d0906287f1eeb0b9434a674f48b99e7052fa7c53c4042",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_bRQ9afwSIP.csv",
+    "row_index": 120,
+    "split": "eval",
+    "text": "CIMB IB says Malaysia could widen corporate tax base for Budget 2027, cut old deductions\n\nCIMB IB says Malaysia could widen corporate tax base for Budget 2027, cut old deductions KUALA LUMPUR (Oct 5): Malaysia could widen its corporate tax base by reviewing special and double deductions that have been in place for two to three decades, and remove deductions that no longer serve their original purpose, said CIMB Investment Bank. CIMB IB said, citing KPMG senior adviser on tax policy Dr Verrinderjeet Singh during a discussion, that the removal of selected deductions could lead to the government collecting more revenue while creating room for a lower headline corporate tax rate.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "label": "ORG"
+      },
+      {
+        "start": 13,
+        "end": 21,
+        "label": "GPE"
+      },
+      {
+        "start": 64,
+        "end": 68,
+        "label": "DATE"
+      },
+      {
+        "start": 90,
+        "end": 97,
+        "label": "ORG"
+      },
+      {
+        "start": 103,
+        "end": 111,
+        "label": "GPE"
+      },
+      {
+        "start": 154,
+        "end": 158,
+        "label": "DATE"
+      },
+      {
+        "start": 179,
+        "end": 191,
+        "label": "GPE"
+      },
+      {
+        "start": 193,
+        "end": 198,
+        "label": "DATE"
+      },
+      {
+        "start": 201,
+        "end": 209,
+        "label": "GPE"
+      },
+      {
+        "start": 410,
+        "end": 430,
+        "label": "ORG"
+      },
+      {
+        "start": 432,
+        "end": 439,
+        "label": "ORG"
+      },
+      {
+        "start": 453,
+        "end": 457,
+        "label": "ORG"
+      },
+      {
+        "start": 490,
+        "end": 509,
+        "label": "PERSON"
+      }
+    ],
+    "notes": "Review: 'KUALA' ORG -> fixed to 'KUALA LUMPUR' GPE; 'two to three decades' DATE -> deleted (duration, not a date expression); added miss 'Verrinderjeet Singh' PERSON (title 'Dr' excluded per guidelines); '2027' kept as DATE (bare year functioning as date reference, cf. train '2026')."
+  },
+  {
+    "article_id": "6e177c8821b02591cbc096efcfe98dbc3f3a4d0e1e7e4d80b41de0ad0d900ddb",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_9xtqAsPitG.csv",
+    "row_index": 59,
+    "split": "eval",
+    "text": "Maybank, Hong Leong Win Best CEO and CFO Honours at Bursa Malaysia Awards\n\nBursa Malaysia awarded its top CEO and CFO honours to Maybank’s Dato’ Sri Khairussaleh Ramli and Hong Leong Bank’s Malkit Singh Maan. The inaugural Bursa Malaysia IR Awards 2026 took place on 4 September. Maybank received four honours, including Best CEO in Investor Relations for its President and Group CEO Khairussaleh. The bank also won Best Company in Investor Relations overall, Best Financial Reporting and Best Large-cap Company in Investor Relations for Financial Services. Malkit won Best CFO in Investor Relations.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 7,
+        "label": "ORG"
+      },
+      {
+        "start": 9,
+        "end": 19,
+        "label": "ORG"
+      },
+      {
+        "start": 52,
+        "end": 73,
+        "label": "EVENT"
+      },
+      {
+        "start": 75,
+        "end": 89,
+        "label": "ORG"
+      },
+      {
+        "start": 129,
+        "end": 136,
+        "label": "ORG"
+      },
+      {
+        "start": 149,
+        "end": 167,
+        "label": "PERSON"
+      },
+      {
+        "start": 172,
+        "end": 187,
+        "label": "ORG"
+      },
+      {
+        "start": 190,
+        "end": 207,
+        "label": "PERSON"
+      },
+      {
+        "start": 223,
+        "end": 252,
+        "label": "EVENT"
+      },
+      {
+        "start": 267,
+        "end": 278,
+        "label": "DATE"
+      },
+      {
+        "start": 280,
+        "end": 287,
+        "label": "ORG"
+      },
+      {
+        "start": 384,
+        "end": 396,
+        "label": "PERSON"
+      },
+      {
+        "start": 558,
+        "end": 564,
+        "label": "PERSON"
+      }
+    ],
+    "notes": "Review: added misses 'Maybank' ORG and 'Hong Leong' ORG (title); 'Hong Leong Win Best' PERSON -> fixed to 'Hong Leong' ORG; deleted 'CFO Honours' ORG, 'CFO' ORG, 'Group' ORG, 'Best Company'/'Best Financial Reporting' ORG, 'Investor Relations' ORG (generic award-category words); 'Bursa Malaysia Awards' ORG -> EVENT (named awards event); 'Bursa'/'Malaysia' GPE pair -> merged to 'Bursa Malaysia' ORG; 'Maybank's Dato' Sri Khairussaleh Ramli' ORG -> split into 'Maybank' ORG + 'Khairussaleh Ramli' PERSON (title excluded); 'Hong Leong Bank's' -> possessive stripped to 'Hong Leong Bank' ORG; 'Bursa Malaysia IR Awards' ORG -> EVENT 'Bursa Malaysia IR Awards 2026' (year included, cf. train 'PNM CUP 2026' EVENT); added misses 'Malkit Singh Maan' PERSON, 'Maybank' ORG, 'Khairussaleh' PERSON, 'Malkit' PERSON."
+  },
+  {
+    "article_id": "3c7cbea559396a72010b50f84bd8c4100c4c3dfa35e7eb8c1f7f8540a13e1377",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_bRQ9afwSIP.csv",
+    "row_index": 26,
+    "split": "eval",
+    "text": "Mplus Market Pulse - 07 Oct 2026\n\nMY: Tracking positive regional performance, the local bourse continued to trade higher ahead of the Budget 2027 announcement. Market breadth turned positive, with 667 gainers against 456 losers. Sector-wise, both Technology and Healthcare outperformed with gains exceeding 3%, while Financial Services lagged the most.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 18,
+        "label": "EVENT"
+      },
+      {
+        "start": 21,
+        "end": 32,
+        "label": "DATE"
+      },
+      {
+        "start": 34,
+        "end": 36,
+        "label": "GPE"
+      },
+      {
+        "start": 141,
+        "end": 145,
+        "label": "DATE"
+      }
+    ],
+    "notes": "Review: added misses 'Mplus Market Pulse' EVENT (named market report programme), '07 Oct 2026' DATE, 'MY' GPE (Malaysia country code dateline); '2027' kept as DATE; deleted 'Healthcare' ORG and 'Financial Services' ORG (generic sector nouns); '667'/'456' CARDINAL and '3%' PERCENT deleted (out of scheme)."
+  },
+  {
+    "article_id": "a8d7872ea5c5092923b301544b8e65de6d5d9568679b796ae2919b8909431fec",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_bRQ9afwSIP.csv",
+    "row_index": 237,
+    "split": "eval",
+    "text": "AEON Credit Closes in on One-year Low as 2Q Results Underwhelm Investors, Analysts\n\nKUALA LUMPUR (Sept 30): AEON Credit Service (M) Bhd (KL:AEONCR) fell to its lowest in nearly a year while analysts turned cautious following a weaker-than-expected quarter at the consumer finance firm. At least two research houses downgraded the stock post-results. Earnings in the first-half only accounted for about one-third of the consensus’ full-year forecast, and there are now concerns over rising provisions and write-offs of bad loans going forward.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 11,
+        "label": "ORG"
+      },
+      {
+        "start": 41,
+        "end": 43,
+        "label": "DATE"
+      },
+      {
+        "start": 84,
+        "end": 96,
+        "label": "GPE"
+      },
+      {
+        "start": 98,
+        "end": 105,
+        "label": "DATE"
+      },
+      {
+        "start": 108,
+        "end": 135,
+        "label": "ORG"
+      },
+      {
+        "start": 140,
+        "end": 146,
+        "label": "ORG"
+      },
+      {
+        "start": 170,
+        "end": 183,
+        "label": "DATE"
+      },
+      {
+        "start": 362,
+        "end": 376,
+        "label": "DATE"
+      },
+      {
+        "start": 430,
+        "end": 439,
+        "label": "DATE"
+      }
+    ],
+    "notes": "Review: 'AEON Credit Closes' ORG -> boundary fixed to 'AEON Credit' ORG; 'One-year' DATE deleted ('one-year low' is a stock term); garbage span 'Analysts\\n\\nKUALA LUMPUR' ORG -> 'KUALA LUMPUR' GPE; 'AEON Credit Service' ORG -> expanded to full legal name 'AEON Credit Service (M) Bhd' ORG; ticker '(KL:AEONCR)' -> 'AEONCR' ORG; 'nearly a year'/'the first-half'/'full-year' kept/added as DATE (relative fiscal-period expressions, cf. train 'the first six months'/'a year earlier' DATE); 'quarter' DATE deleted (generic); 'At least two'/'about one-third' CARDINAL deleted."
+  },
+  {
+    "article_id": "bdd840f5db8535c01a7884cba064b4dd9926cff01a182f9f8425ddcbdb963012",
+    "source_file": "Maybank_Malaysia_OnlineMedia_07-Sep-2026_07-Oct-2026_58yzyiBQ9U.csv",
+    "row_index": 96,
+    "split": "eval",
+    "text": "RHB, The Makeover Guys Offer Flexi Loan for Home Purchase and Renovation\n\nRHB Bank has partnered with renovation firm The Makeover Guys to offer financing that covers both a property purchase and renovation costs. The Makeover Flexi Loan provides eligible customers with financing of up to 120% of the property’s value. This comprises up to 90% for the home purchase and an additional 30% for renovation work, mortgage insurance or takaful, legal costs and documentation fees. Borrowers can repay the loan over a maximum of 35 years or until they reach the age of 70, whichever comes first.",
+    "entities": [
+      {
+        "start": 0,
+        "end": 3,
+        "label": "ORG"
+      },
+      {
+        "start": 5,
+        "end": 22,
+        "label": "ORG"
+      },
+      {
+        "start": 74,
+        "end": 82,
+        "label": "ORG"
+      },
+      {
+        "start": 118,
+        "end": 135,
+        "label": "ORG"
+      }
+    ],
+    "notes": "Review: 'The Makeover Guys Offer Flexi Loan' ORG -> boundary fixed to 'The Makeover Guys' ORG (company name); 'Home Purchase' ORG deleted (generic); 'The Makeover Guys' WORK_OF_ART -> relabeled ORG; 'The Makeover Flexi Loan' deleted (product name, out of scheme); '35 years' DATE, 'the age of'/'70' DATE deleted (duration/age, not date expressions); percents deleted (out of scheme); added miss 'RHB Bank' ORG."
+  }
+]
