@@ -163,60 +163,616 @@ def extract_entities_route():
 # ---------------------------------------------------------------------------
 
 INDEX_HTML = r"""<!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maybank NER — Entity Extraction</title>
+<title>Maybank NER — Named Entity Extraction Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-  label { display: block; margin: 1rem 0 0.25rem; font-weight: 600; }
-  input[type=text], textarea { width: 100%; padding: .5rem; font-size: 1rem; }
-  textarea { min-height: 160px; font-family: inherit; }
-  button { margin-top: 1rem; padding: .6rem 1.4rem; font-size: 1rem; cursor: pointer; }
-  button:disabled { opacity: .5; cursor: wait; }
-  #spinner { display: none; margin-top: 1rem; color: #555; }
-  #errorBanner { display: none; margin-top: 1rem; padding: .75rem; background: #fdecea; border: 1px solid #f5c6cb; color: #a4262c; border-radius: 4px; }
-  #results { display: none; margin-top: 1.5rem; }
-  table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
-  th, td { border: 1px solid #ccc; padding: .4rem .6rem; text-align: left; }
-  th { background: #f2f2f2; }
-  #annotated { margin-top: 1rem; padding: .75rem; border: 1px solid #ddd; border-radius: 4px; white-space: pre-wrap; line-height: 1.9; }
-  mark { padding: .1em .3em; border-radius: 3px; }
-  .lbl { font-size: .7em; font-weight: 700; color: #fff; background: rgba(0,0,0,.45); border-radius: 3px; padding: .05em .3em; margin-left: .25em; vertical-align: super; }
+  :root {
+    --bg-page: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --primary: #0284c7;
+    --primary-hover: #0369a1;
+    --primary-light: #e0f2fe;
+    --accent: #f59e0b;
+    
+    /* Entity Colors */
+    --c-org-bg: #dbeafe; --c-org-txt: #1e40af; --c-org-border: #93c5fd;
+    --c-person-bg: #fce7f3; --c-person-txt: #9d174d; --c-person-border: #f9a8d4;
+    --c-gpe-bg: #dcfce7; --c-gpe-txt: #166534; --c-gpe-border: #86efac;
+    --c-date-bg: #fef3c7; --c-date-txt: #92400e; --c-date-border: #fcd34d;
+    --c-event-bg: #f3e8ff; --c-event-txt: #6b21a8; --c-event-border: #d8b4fe;
+    --c-money-bg: #ffedd5; --c-money-txt: #9a3412; --c-money-border: #fdba74;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 2.25rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(245, 158, 11, 0) 70%);
+    border-radius: 50%;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fde68a;
+    margin-bottom: 1rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+  .header p {
+    color: #94a3b8;
+    font-size: 0.975rem;
+    max-width: 650px;
+  }
+  .header-meta {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    font-size: 0.825rem;
+    color: #cbd5e1;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1rem;
+  }
+  .header-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Card Styles */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+    margin-bottom: 1.75rem;
+  }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  /* Sample Presets */
+  .presets-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color);
+  }
+  .presets-label {
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-right: 0.25rem;
+  }
+  .preset-btn {
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    color: #334155;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .preset-btn:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: #bae6fd;
+    transform: translateY(-1px);
+  }
+
+  /* Form Controls */
+  label {
+    display: block;
+    margin: 0.85rem 0 0.35rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1e293b;
+  }
+  input[type=text], textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text-main);
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input[type=text]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  }
+  textarea {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+  .char-hint {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+  }
+
+  /* Button Actions */
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  button[type=submit] {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    transition: background 0.2s, transform 0.1s;
+  }
+  button[type=submit]:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+  button[type=submit]:disabled {
+    opacity: 0.65;
+    cursor: wait;
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover {
+    background: #f1f5f9;
+    color: var(--text-main);
+  }
+
+  /* Spinner & Error */
+  #spinner {
+    display: none;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    color: #166534;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .spin-icon {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid #86efac;
+    border-top-color: #166534;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #errorBanner {
+    display: none;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* Results Section */
+  #results {
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .stat-card {
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+  }
+  .stat-label {
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .stat-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-top: 0.25rem;
+  }
+
+  /* Legend Chips */
+  .legend-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0 1.25rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+  .legend-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-right: 0.25rem;
+  }
+  .legend-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.775rem;
+    font-weight: 700;
+  }
+
+  /* Annotated Text Display */
+  #annotated {
+    margin-top: 0.5rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    white-space: pre-wrap;
+    line-height: 2.3;
+    font-size: 1.05rem;
+    font-family: inherit;
+    color: #1e293b;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  }
+  mark {
+    padding: 0.25em 0.5em;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: transform 0.1s, box-shadow 0.1s;
+    cursor: default;
+  }
+  mark:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  }
+  .lbl {
+    font-size: 0.7em;
+    font-weight: 800;
+    border-radius: 4px;
+    padding: 0.15em 0.45em;
+    margin-left: 0.4em;
+    letter-spacing: 0.03em;
+    vertical-align: baseline;
+    opacity: 0.9;
+  }
+
+  /* Entities Table */
+  .table-responsive {
+    overflow-x: auto;
+    margin-top: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: #ffffff;
+  }
+  th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    border-bottom: 1.5px solid var(--border-color);
+    text-align: left;
+  }
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: #334155;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background-color: #f8fafc; }
+  .entity-text-cell {
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  .offset-cell {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.825rem;
+    color: #64748b;
+  }
+
+  /* Tag styles per label */
+  .badge-ORG    { background: var(--c-org-bg); color: var(--c-org-txt); border: 1px solid var(--c-org-border); }
+  .badge-PERSON { background: var(--c-person-bg); color: var(--c-person-txt); border: 1px solid var(--c-person-border); }
+  .badge-GPE    { background: var(--c-gpe-bg); color: var(--c-gpe-txt); border: 1px solid var(--c-gpe-border); }
+  .badge-DATE   { background: var(--c-date-bg); color: var(--c-date-txt); border: 1px solid var(--c-date-border); }
+  .badge-EVENT  { background: var(--c-event-bg); color: var(--c-event-txt); border: 1px solid var(--c-event-border); }
+  .badge-MONEY  { background: var(--c-money-bg); color: var(--c-money-txt); border: 1px solid var(--c-money-border); }
+
+  /* Utility & Footer */
+  .copy-btn {
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
+    color: #475569;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .copy-btn:hover { background: #e2e8f0; color: #0f172a; }
+  .footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+  }
 </style>
 </head>
 <body>
-<h1>Entity Extraction</h1>
-<div id="errorBanner" role="alert"></div>
-<form id="nerForm">
-  <label for="title">Title</label>
-  <input type="text" id="title" name="title" placeholder="e.g. Maybank Q3 results">
-  <label for="body">Body</label>
-  <textarea id="body" name="body" placeholder="Paste the text to analyze..."></textarea>
-  <button type="submit" id="submitBtn">Submit</button>
-</form>
-<div id="spinner" aria-live="polite">Analyzing&hellip; please wait.</div>
-<div id="results">
-  <h2>Results (<span id="count">0</span>)</h2>
-  <table>
-    <thead><tr><th>Text</th><th>Label</th><th>Start</th><th>End</th></tr></thead>
-    <tbody id="rows"></tbody>
-  </table>
-  <h2>Annotated text</h2>
-  <div id="annotated"></div>
-</div>
-<script>
-const LABEL_COLORS = {};  // label -> color, assigned on the fly
-const PALETTE = ["#ffe082", "#a5d6a7", "#90caf9", "#ce93d8", "#ffab91", "#80cbc4", "#f48fb1", "#fff59d"];
-let paletteIdx = 0;
+<div class="container">
 
-function colorFor(label) {
-  if (!(label in LABEL_COLORS)) {
-    LABEL_COLORS[label] = PALETTE[paletteIdx % PALETTE.length];
-    paletteIdx += 1;
+  <!-- Header -->
+  <header class="header">
+    <h1>Maybank News NER Extraction</h1>
+    <p>Layanan ekstraksi otomatis entitas ORG, PERSON, GPE, DATE, EVENT, dan MONEY dari judul serta isi berita perbankan berbasis spaCy fine-tuned.</p>
+  </header>
+
+  <!-- Error Banner -->
+  <div id="errorBanner" role="alert"></div>
+
+  <!-- Form Card -->
+  <div class="card">
+    <div class="card-title">
+      <span>Input Berita</span>
+    </div>
+
+    <!-- Quick Presets -->
+    <div class="presets-bar">
+      <span class="presets-label">Coba Contoh Cepat:</span>
+      <button type="button" class="preset-btn" onclick="loadSample(1)">Laba Maybank (Finance)</button>
+      <button type="button" class="preset-btn" onclick="loadSample(2)">Putusan Pengadilan (Legal)</button>
+      <button type="button" class="preset-btn" onclick="loadSample(3)">Golf Championship (Sports)</button>
+      <button type="button" class="preset-btn" onclick="clearForm()" style="margin-left:auto; color:#ef4444; border-color:#fecaca;">Kosongkan</button>
+    </div>
+
+    <form id="nerForm">
+      <label for="title">Judul Berita (Title)</label>
+      <input type="text" id="title" name="title" placeholder="Masukkan judul berita, contoh: Maybank 2Q profit rises">
+      
+      <label for="body">Isi Berita (Body)</label>
+      <textarea id="body" name="body" placeholder="Tempel atau ketik teks artikel berita di sini..." oninput="updateCharCount()"></textarea>
+      <div class="char-hint">
+        <span id="charCount">0</span>&nbsp;/ 100.000 karakter
+      </div>
+
+      <div class="actions">
+        <button type="submit" id="submitBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Ekstraksi Entitas
+        </button>
+        <button type="button" class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </form>
+
+    <div id="spinner" aria-live="polite">
+      <div class="spin-icon"></div>
+      <span>Sedang memproses teks dengan model spaCy...</span>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div id="results">
+    
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Entitas Ditemukan</div>
+        <div class="stat-value" id="count">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Karakter Dianalisis</div>
+        <div class="stat-value" id="totalChars">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Model Engine</div>
+        <div class="stat-value" style="font-size:1.15rem; color:#0284c7; padding-top:0.4rem;">maybank-ner-1.0</div>
+      </div>
+    </div>
+
+    <!-- Annotated Text Card -->
+    <div class="card">
+      <div class="card-title">
+        <span>Teks Beranotasi (Highlight Visual)</span>
+        <button class="copy-btn" onclick="copyAnalyzedText()">Salin Teks</button>
+      </div>
+      
+      <!-- Legend Chips -->
+      <div class="legend-box">
+        <span class="legend-title">Keterangan Label:</span>
+        <span class="legend-chip badge-ORG">ORG &bull; Organisasi</span>
+        <span class="legend-chip badge-PERSON">PERSON &bull; Orang</span>
+        <span class="legend-chip badge-GPE">GPE &bull; Lokasi/Negara</span>
+        <span class="legend-chip badge-DATE">DATE &bull; Tanggal/Waktu</span>
+        <span class="legend-chip badge-EVENT">EVENT &bull; Acara</span>
+        <span class="legend-chip badge-MONEY">MONEY &bull; Uang</span>
+      </div>
+
+      <div id="annotated"></div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card">
+      <div class="card-title">
+        <span>Tabel Rincian Entitas</span>
+        <button class="copy-btn" onclick="copyJsonPayload()">Salin JSON API</button>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 50px;">#</th>
+              <th>Teks Entitas</th>
+              <th>Tipe Label</th>
+              <th>Start Char</th>
+              <th>End Char</th>
+              <th>Panjang</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Coursework Data Science — Named Entity Recognition Web Service</p>
+  </footer>
+
+</div>
+
+<script>
+let lastPayload = null;
+
+// Presets
+const SAMPLES = {
+  1: {
+    title: "Maybank 2Q profit rises",
+    body: "Maybank posted a net profit of RM2.69 billion in Kuala Lumpur on Wednesday."
+  },
+  2: {
+    title: "High Court to rule Oct 23 on Maritime Network bid",
+    body: "The High Court here today fixed Oct 23 to rule on a stay application by Maritime Network Sdn Bhd in Kuala Lumpur."
+  },
+  3: {
+    title: "Maybank Championship 2026 kicks off in Seri Kembangan",
+    body: "The prestigious golf tournament Maybank Championship will take place in Seri Kembangan on 1 Oktober, featuring professional golfer Kelly Tan."
   }
-  return LABEL_COLORS[label];
+};
+
+function loadSample(id) {
+  if (SAMPLES[id]) {
+    document.getElementById("title").value = SAMPLES[id].title;
+    document.getElementById("body").value = SAMPLES[id].body;
+    updateCharCount();
+    hideError();
+  }
+}
+
+function clearForm() {
+  document.getElementById("title").value = "";
+  document.getElementById("body").value = "";
+  updateCharCount();
+  hideError();
+  document.getElementById("results").style.display = "none";
+}
+
+function updateCharCount() {
+  const title = document.getElementById("title").value.trim();
+  const body = document.getElementById("body").value.trim();
+  const text = title ? (title + (body ? "\n\n" + body : "")) : body;
+  document.getElementById("charCount").textContent = text.length.toLocaleString();
 }
 
 function escapeHtml(s) {
@@ -235,14 +791,30 @@ function hideError() {
   banner.textContent = "";
 }
 
+// Label Styles Helper
+const LABEL_CLASSES = {
+  "ORG": "badge-ORG",
+  "PERSON": "badge-PERSON",
+  "GPE": "badge-GPE",
+  "DATE": "badge-DATE",
+  "EVENT": "badge-EVENT",
+  "MONEY": "badge-MONEY"
+};
+
+function getClassForLabel(label) {
+  return LABEL_CLASSES[label] || "badge-ORG";
+}
+
+// Form Submit
 document.getElementById("nerForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   hideError();
   const btn = document.getElementById("submitBtn");
   const spinner = document.getElementById("spinner");
   const results = document.getElementById("results");
+
   btn.disabled = true;
-  spinner.style.display = "block";
+  spinner.style.display = "flex";
 
   try {
     const resp = await fetch("/extract-entities", {
@@ -255,10 +827,11 @@ document.getElementById("nerForm").addEventListener("submit", async (e) => {
     });
     const payload = await resp.json().catch(() => ({}));
     if (!resp.ok) {
-      showError(payload.error || ("Request failed with status " + resp.status));
+      showError(payload.error || ("Permintaan gagal dengan status " + resp.status));
       results.style.display = "none";
       return;
     }
+    lastPayload = payload;
     renderResults(payload);
   } catch (err) {
     showError("Network error: " + err.message);
@@ -271,39 +844,75 @@ document.getElementById("nerForm").addEventListener("submit", async (e) => {
 function renderResults(payload) {
   const entities = payload.entities || [];
   document.getElementById("count").textContent = entities.length;
+  
+  const rawText = document.getElementById("title").value.trim() + "\n\n" + document.getElementById("body").value.trim();
+  document.getElementById("totalChars").textContent = rawText.length.toLocaleString();
+
+  // Render Table Rows
   const rows = document.getElementById("rows");
   rows.innerHTML = "";
-  for (const e of entities) {
+  if (entities.length === 0) {
     const tr = document.createElement("tr");
-    for (const k of ["text", "label", "start", "end"]) {
-      const td = document.createElement("td");
-      td.textContent = e[k];
-      tr.appendChild(td);
-    }
+    tr.innerHTML = '<td colspan="6" style="text-align:center; color:#94a3b8; padding:2rem;">Tidak ada entitas yang terdeteksi pada teks ini.</td>';
     rows.appendChild(tr);
+  } else {
+    entities.forEach((e, idx) => {
+      const tr = document.createElement("tr");
+      const badgeCls = getClassForLabel(e.label);
+      const spanLen = e.end - e.start;
+      tr.innerHTML = `
+        <td style="color:#94a3b8; font-weight:600;">${idx + 1}</td>
+        <td class="entity-text-cell">${escapeHtml(e.text)}</td>
+        <td><span class="legend-chip ${badgeCls}">${escapeHtml(e.label)}</span></td>
+        <td class="offset-cell">${e.start}</td>
+        <td class="offset-cell">${e.end}</td>
+        <td class="offset-cell">${spanLen} chars</td>
+      `;
+      rows.appendChild(tr);
+    });
   }
-  renderAnnotated(entities);
-  document.getElementById("results").style.display = "block";
+
+  // Render Annotated Text
+  renderAnnotated(entities, rawText);
+  
+  const resultsCard = document.getElementById("results");
+  resultsCard.style.display = "block";
+  resultsCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-function renderAnnotated(entities) {
-  // Rebuild the analyzed text client-side: title.strip() + "\n\n" + body.strip()
-  const raw = document.getElementById("title").value.trim() + "\n\n" + document.getElementById("body").value.trim();
+function renderAnnotated(entities, raw) {
   const box = document.getElementById("annotated");
   const sorted = [...entities].sort((a, b) => a.start - b.start || a.end - b.end);
   let out = "";
   let pos = 0;
+
   for (const e of sorted) {
-    if (e.start < pos) continue;  // skip overlapping span
+    if (e.start < pos) continue; // skip overlapping span
     out += escapeHtml(raw.slice(pos, e.start));
-    const color = colorFor(e.label);
-    out += '<mark style="background:' + color + '">' + escapeHtml(raw.slice(e.start, e.end)) +
-           '<span class="lbl">' + escapeHtml(e.label) + "</span></mark>";
+    const badgeCls = getClassForLabel(e.label);
+    out += `<mark class="${badgeCls}">${escapeHtml(raw.slice(e.start, e.end))}<span class="lbl ${badgeCls}">${escapeHtml(e.label)}</span></mark>`;
     pos = e.end;
   }
   out += escapeHtml(raw.slice(pos));
   box.innerHTML = out;
 }
+
+function copyAnalyzedText() {
+  const text = document.getElementById("annotated").innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Teks berhasil disalin ke clipboard!");
+  });
+}
+
+function copyJsonPayload() {
+  if (!lastPayload) return;
+  navigator.clipboard.writeText(JSON.stringify(lastPayload, null, 2)).then(() => {
+    alert("JSON respons berhasil disalin!");
+  });
+}
+
+// Initial Char Count
+updateCharCount();
 </script>
 </body>
 </html>
