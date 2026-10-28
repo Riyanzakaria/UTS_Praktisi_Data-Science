@@ -1,7 +1,6 @@
 # Laporan Pengerjaan per Role — Study Case: Article Named-Entity Recognition Service
 
 > Dokumen ini menceritakan **alur pengerjaan langkah demi langkah** tiap role, dari awal
-> sampai project selesai — cocok dipakai saat presentasi/defense ("ceritakan prosesnya").
 > Untuk ringkasan akhir (artefak + angka metrik), lihat `PEMBAGIAN_PERAN.md`.
 
 ## Gambaran alur kerja keseluruhan
@@ -150,7 +149,7 @@ Langkah yang dikerjakan:
 
 ---
 
-## Ketergantungan antar role (penting untuk presentasi)
+## Ketergantungan antar role
 
 - **Role 1 → Role 2 & Role 3.** Role 2 butuh model final untuk dievaluasi;
   Role 3 butuh model final untuk diserve. Keduanya baru bisa full-speed setelah
